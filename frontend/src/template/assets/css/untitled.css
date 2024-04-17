@@ -1,0 +1,17 @@
+.btn-cell-play {
+  background-color: #f2bf49;
+  border-color: #f2bf49;
+}
+
+.btn-pause {
+  background-color: rgb(188,24,83);
+  border-radius: 1rem !important;
+  border-color: rgb(188,24,83);
+  color: white;
+}
+
+.default-login {
+  margin-top: 10px;
+  background-color: gray;
+}
+

@@ -1,0 +1,24 @@
+{
+  "name": "managertime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andy92Innova/managertime.git"
+  },
+  "author": "Andy92Innova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Andy92Innova/managertime/issues"
+  },
+  "homepage": "https://github.com/Andy92Innova/managertime#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "pg": "^8.11.5"
+  }
+}
