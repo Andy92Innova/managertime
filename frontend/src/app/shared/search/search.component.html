@@ -1,0 +1,33 @@
+<div class="card mb-1">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <fa-icon [icon]="faFilter" class="me-1"></fa-icon>
+      Filter
+    </h5>
+  </div>
+  <div class="card-body p-0">
+    <form>
+      <div class="d-flex flex-row mb-3">
+        <div class="p-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="addon-environment">Environment</span>
+            <input type="text" class="form-control" placeholder="enter the environment" aria-label="environment"
+              aria-describedby="addon-environment">
+          </div>
+        </div>
+        <div class="p-2">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="addon-task">Task</span>
+            <input type="text" class="form-control" placeholder="enter the task" aria-label="task"
+              aria-describedby="addon-task">
+          </div>
+        </div>
+        <div class="p-2">
+          <button class="btn btn-primary ml-1" type="button">
+            <fa-icon [icon]="faFilter" class="me-1"></fa-icon>
+            Filter</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

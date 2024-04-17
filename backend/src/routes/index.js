@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 //middlewares
+router.use('healthcheck', async (req,res)=>{
+    return res.send({message: 'This api is ok'})
+});
+
+router.use('/security', require('./security.routes'));
 router.use('/env', require('./environment.routes'));
 router.use('/task', require('./task.routes'));
 

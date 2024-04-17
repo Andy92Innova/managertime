@@ -1,0 +1,92 @@
+<div class="table-responsive text-nowrap text-center mb-1">
+  <table class="table table-striped table-hover table-dark table-sm">
+    <thead>
+      <ng-template *ngIf="getCompleted; then headerComplete else headerIncomplete"></ng-template>
+    </thead>
+    <tbody>
+      <ng-template *ngIf="getCompleted; then bodyComplete else bodyIncomplete"></ng-template>
+    </tbody>
+    <tfoot *ngIf="message !== ''" style="color:black;">
+      <tr>
+        <td [attr.colSpan]="getCompleted ? 8: 6">
+          {{message}}
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <ng-template #headerComplete>
+    <tr>
+      <th class="text-uppercase">Environment</th>
+      <th class="text-uppercase">TASK</th>
+      <th class="text-truncate">DESCRIPTION</th>
+      <th class="text-uppercase">START DATE</th>
+      <th class="text-uppercase">TIME</th>
+      <th class="text-uppercase">BREAK</th>
+      <th class="text-uppercase">PLAY</th>
+      <th class="text-uppercase">COMPLETE</th>
+    </tr>
+
+  </ng-template>
+  <ng-template #headerIncomplete>
+
+    <tr>
+      <th class="text-uppercase">Environment</th>
+      <th class="text-uppercase">TASK</th>
+      <th class="text-truncate">DESCRIPTION</th>
+      <th class="text-uppercase">END DATE</th>
+      <th class="text-uppercase">TOTAL TIME</th>
+      <th class="text-uppercase">BREAK</th>
+    </tr>
+
+  </ng-template>
+
+  <ng-template #bodyComplete>
+    <ng-template *ngIf="data.length > 0; then WithDataComplete else bodyWithoutData">
+    </ng-template>
+    <ng-template #WithDataComplete>
+      <tr *ngFor="let task_result of data">
+        <td>{{task_result.env_name}}</td>
+        <td>{{task_result.task_name}}</td>
+        <td class="text-truncate">{{task_result.task_description}}</td>
+        <td>{{task_result.start_date}}</td>
+        <td>{{task_result.times}}</td>
+        <td>{{task_result.break_time}}</td>
+        <td>
+          <button class="btn btn-warning btn-cell-play" type="button" data-value="{{task_result.task_id}}"
+            (click)="changeStatusTask(task_result)">
+            <fa-icon *ngIf="task_result.paused" [icon]="faPlay"></fa-icon>
+            <fa-icon *ngIf="!task_result.paused" [icon]="faPause"></fa-icon>
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-primary" type="button" data-value="{{task_result.task_id}}"
+            (click)="completeTask(task_result.env_id, task_result.task_id)">
+            <fa-icon [icon]="faCheck"></fa-icon>
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </ng-template>
+  <ng-template #bodyIncomplete>
+    <ng-template *ngIf="data.length > 0; then WithDataIncomplete else bodyWithoutData">
+    </ng-template>
+    <ng-template #WithDataIncomplete>
+      <tr *ngFor="let task_result of data">
+        <td>{{task_result.env_name}}</td>
+        <td>{{task_result.task_name}}</td>
+        <td class="text-truncate">{{task_result.task_description}}</td>
+        <td>{{task_result.end_date}}</td>
+        <td>{{task_result.times}}</td>
+        <td>{{task_result.break_time}}</td>
+      </tr>
+    </ng-template>
+  </ng-template>
+
+  <ng-template #bodyWithoutData>
+    <tr>
+      <td [attr.colSpan]="getCompleted ? 8: 6">
+        You have not yet created tasks
+      </td>
+    </tr>
+  </ng-template>

@@ -1,15 +1,11 @@
 version: '0.1'
 services:
   backend:
-    image: node:20.12.2-alpine3.19
-    command: sh -c "npm install && npm run app"
+    image: andydar/managertimebackend
     ports: 
       - 5001:5001
-    working_dir: /backend
-    volumes:
-      - ./backend:/backend
     healthcheck: 
-      test: ["CMD", "curl", "-f", "http://localhost:5001/api"]
+      test: ["CMD", "curl", "-f", "http://localhost:5001/api/healthcheck"]
       interval: 15s
       timeout: 5s
       retries: 3
@@ -33,13 +29,9 @@ services:
       - back-tier
     
   frontend:
-    image: node:20.12.2-alpine3.19
-    command: sh -c "npm install && npm run build && npm run serve"
+    image: managertimefrontend
     ports:
       - 5002:5002
-    working_dir: /frontend
-    volumes:
-      - "./frontend:/frontend"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5002"]
       interval: 1m30s
@@ -63,7 +55,7 @@ services:
     volumes:
       - "db-data:/var/lib/postgresql/data"
       - "./healthchecks:/healthchecks"
-      - "./backend/.sqlfiles/consider_only:/docker-entrypoint-initdb.d"
+      - "./sqlfiles/consider_only:/docker-entrypoint-initdb.d"
     healthcheck:
       test: /healthchecks/postgres.sh
       interval: "5s"

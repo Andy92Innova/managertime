@@ -1,0 +1,111 @@
+<section class="masthead text-white text-center" style="background-color: #00493f;">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="card mb-2 panel-header">
+          <div class="card-header">
+            <h4 class="mb-0">Total time working today</h4>
+          </div>
+          <div class="card-body">
+            <p class="mt-1 mb-3 fs-time-day">00:00:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-2 panel-header">
+          <div class="card-header">
+            <h4 class="mb-0">You're working in</h4>
+          </div>
+          <div class="card-body">
+            <p class="font-weight-light mb-1">
+              <small class="me-1 bold-text text-uppercase fs-4">Environment:</small>
+              <small class="fs-3">{{activeTask.env_name}}</small>
+            </p>
+            <p class="font-weight-light mb-2">
+              <small class="me-1 bold-text text-uppercase fs-4">TASK:</small>
+              <small class="fs-3">{{activeTask.task_name}}</small>
+            </p>
+            <p class="mt-1 mb-3 fs-1"> {{formatBTime}}</p>
+            <button class="btn btn-warning btn-lg rounded-0 btn-pause" type="button" (click)="changeStatusTask()">
+              <fa-icon [icon]="faPause" class="me-1" *ngIf="activeTask.active"></fa-icon>
+              <fa-icon [icon]="faPlay" class="me-1" *ngIf="!activeTask.active"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>ManagerTime help you to handle your time doing any task. It mean, you can do anything freedom and knowing in
+          the end of the day how many time do you invest doing your activities.<br></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="portafolio" class="section-card">
+  <div class="container shadow-sm mb-1 p-1">
+    <div class="row mb-3">
+      <div class="col">
+        <div class="d-flex mb-3">
+          <div class="p-2">
+            <button class="btn btn-info" type="button" (click)="openModal('env')">
+              <fa-icon [icon]="faList" class="me-1"></fa-icon>
+              ENVIRONMENTS</button>
+          </div>
+          <div class="ms-auto p-2">
+            <button class="btn btn-success justify-content-end " type="button" (click)="openModal('task')"
+              data-target="#modal-new">
+              <fa-icon [icon]="faHourglass" class="me-1"></fa-icon>
+              NEW TASK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container shadow p-2">
+    <div class="row">
+      <div class="col">
+        <h3>ACTIVE TASK</h3>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <app-search></app-search>
+    </div>
+    <div class="row mb-2">
+      <div class="col">
+        <div class="row">
+          <div class="col text-center">
+            <app-table-result [getCompleted]="true" [data]="tasksActivedResult" [message]="message"
+              (taskPlayed)="changeStatusActiveTask($event, true)" (taskCompleted)="taskCompleted($event)"></app-table-result>
+            <app-pagination></app-pagination>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="about" class="mb-0 section-card no-active">
+  <div class="container shadow p-2">
+    <div class="row mb-2">
+      <div class="col">
+        <div class="d-flex justify-content-between">
+          <h3 class="float-left">COMPLETE TASK</h3>
+          <button class="btn btn-danger float-right" type="button">
+            <fa-icon [icon]="faDownload" class="me-1"></fa-icon>
+            Export
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-2">
+      <app-search></app-search>
+    </div>
+    <div class="row mb-2">
+      <div class="col text-center">
+        <app-table-result [getCompleted]="false" [data]="tasksCompletedResult"></app-table-result>
+        <app-pagination></app-pagination>
+      </div>
+    </div>
+  </div>
+</section>

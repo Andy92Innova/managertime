@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <fa-icon [icon]="faList" class="me-1"></fa-icon>
+    Environment
+  </h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p>Create your enviroments to assign your tasks and have a control over them.</p>
+
+  <div class="d-flex flex-row mb-3">
+    <div class="p-2">
+      <div class="input-group mb-3">
+        <label class=" input-group-text mr-1">Environment Name</label>
+        <input class="form-control form-control-sm mr-1" type="text" name="input-env-name" required=""
+          placeholder="Environment name" autofocus="" [(ngModel)]="envName" (keypress)="onKeyPress($event)" />
+      </div>
+    </div>
+    <div class="p-2">
+      <button class="btn btn-primary" type="button" (click)="save()">Save</button>
+    </div>
+  </div>
+
+  <div class="table-responsive text-center table-small">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th hidden>ID</th>
+          <th class="text-uppercase">NAME</th>
+          <th class="text-uppercase">DELETE</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-template *ngIf="data.length > 0; then WithData else WithoutData;">
+        </ng-template>
+        <ng-template #WithData>
+          <tr *ngFor="let env_result of data">
+            <td hidden>{{env_result.env_id}}</td>
+            <td>{{env_result.env_name}}</td>
+            <td>
+              <button class="btn btn-danger btn-sm" type="button"
+                (click)="delete(env_result.env_id)">
+                <fa-icon [icon]="faTrash"></fa-icon>
+              </button>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template #WithoutData>
+          <tr>
+            <td colspan="3">Create a new environment</td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="message !== ''">
+    <div class="alert mt-1" [ngClass]="{'alert-info': typeAlert == 0, 'alert-danger': typeAlert == 1}" role="alert">
+      {{message}}
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>

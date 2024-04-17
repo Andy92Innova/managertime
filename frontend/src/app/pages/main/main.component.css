@@ -1,0 +1,57 @@
+/* Header */
+
+@media (min-width:992px) {
+  .masthead {
+    padding-top: calc(1rem + 106px);
+    padding-bottom: 3rem;
+  }
+}
+
+.masthead {
+  padding-top: calc(1rem + 72px);
+  padding-bottom: 3rem;
+}
+
+.btn-cell-play {
+  background-color: #f2bf49;
+  border-color: #f2bf49;
+}
+
+.btn-pause {
+  background-color: rgb(188, 24, 83);
+  border-radius: 1rem !important;
+  border-color: rgb(188, 24, 83);
+  color: white;
+}
+
+/* rest*/
+.panel-header {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 20rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.section-card {
+  color:white;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+
+}
+
+.no-active {
+  background-color: #00bce2;
+}
+
+.fs-time-day{
+  font-size: 5rem;
+}
+
+
+
+

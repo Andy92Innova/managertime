@@ -1,0 +1,42 @@
+<div class="modal-header">
+  <h4 class="modal-title">
+    <fa-icon [icon]="faHourglass" class="me-1"></fa-icon>
+    NEW TASK
+  </h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+  <p>Create a new task to manage your time doing it.&nbsp;</p>
+  <form [formGroup]="formNewTask">
+    <div class="input-group mb-3">
+      <label class="input-group-text" for="input-environment">Environment</label>
+      <select class="form-select" id="input-environment" formControlName="environment">
+        <option *ngFor="let env of envs" value="{{env.env_id}}">{{env.env_name}}</option>
+      </select>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text">Name</label>
+      <input class="form-control" type="text" name="input-task-name"
+        placeholder="What's the task's name ?" formControlName="task_name" maxlength="20">
+    </div>
+    <div class="form-group mb-3">
+      <label class="form-label" for="input-task-desc">Description</label>
+      <textarea class="form-control" name="input-task-desc"
+        placeholder="Write a meanful description for your task" maxlength="300"
+        formControlName="task_description" maxlength="300"></textarea>
+    </div>
+    <div class="input-group mb-3">
+      <label class="input-group-text">Break: Format[hh:mm]</label>
+      <input class="form-control" type="time" name="input-task-break" formControlName="break_time">
+    </div>
+  </form>
+  <div *ngIf="message !== ''">
+    <div class="alert mt-1" [ngClass]="{'alert-info': typeAlert == 0, 'alert-danger': typeAlert == 1}" role="alert">
+      {{message}}
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-light" type="button" (click)="activeModal.close('Close click')">Close</button>
+  <button class="btn btn-primary" type="button" (click)="onSubmit()">Save</button>
+</div>

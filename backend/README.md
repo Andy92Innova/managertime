@@ -20,24 +20,32 @@ This backend was built using the following packages
 `express`^4.19.2
 
 `pg` ^8.11.5
+
+`docker`
+
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`SERVER_PORT_ACCOUNT`
+`SERVER_PORT`
 
 `NODE_ENV`
 
-`DB_POSTGRES_USER`
+`POSTGRES_USER`
 
-`DB_POSTGRES_PASSWORD`
+`POSTGRES_PASSWORD`
 
-`DB_POSTGRES_DATABASE`
+`POSTGRES_DB`
 
-`DB_POSTGRES_HOST`
+`POSTGRES_HOST`
 
-`DB_POSTGRES_PORT`
+`POSTGRES_PORT`
 
+`POSTGRES_REJECTUNAUTHORIZED`
+
+`POSTGRES_DIALECT`
+
+`SECRET_KEY_ENCRYPT`
 
 ## Features
 
