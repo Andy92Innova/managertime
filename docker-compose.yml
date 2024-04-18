@@ -29,7 +29,7 @@ services:
       - front-tier
     
   frontend:
-    build: ./frontend
+    image: andydar/managertime-frontend:0.3
     ports:
       - 5002:4200
     healthcheck:

@@ -7,8 +7,6 @@ This project was built and separeted in two apps [backend] y [frontend].
 
 The backend project contains all the necessary apis. 
 
-
-
 ## Tools
 
 This backend was built using the following packages
@@ -46,6 +44,10 @@ To run this project, you will need to add the following environment variables to
 `POSTGRES_DIALECT`
 
 `SECRET_KEY_ENCRYPT`
+
+## Dockerfile
+
+The dockerfile use *node:20.12.2-alpine3.19* image and expose the port 5001 to use the app, also, run the container using *node app.js* command.
 
 ## Features
 
