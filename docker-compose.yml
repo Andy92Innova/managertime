@@ -1,8 +1,8 @@
 version: '0.1'
 services:
   backend:
-    image: andydar/managertimebackend
-    ports: 
+    image: andydar/managertime-backend:0.3
+    ports:
       - 5001:5001
     healthcheck: 
       test: ["CMD", "curl", "-f", "http://localhost:5001/api/healthcheck"]
@@ -14,24 +14,24 @@ services:
       db:
         condition: service_healthy
     environment:
-      - SERVER_PORT=5001
-      - NODE_ENV=production
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456789
-      - POSTGRES_DB=managertime
-      - POSTGRES_HOST=localhost
-      - POSTGRES_PORT=5000
-      - POSTGRES_REJECTUNAUTHORIZED=false
-      - POSTGRES_DIALECT=postgres
-      - SECRET_KEY_ENCRYPT=1234567890
+      SERVER_PORT: 5001
+      NODE_ENV: production
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "123456789"
+      POSTGRES_DB: managertime
+      POSTGRES_HOST: host.docker.internal
+      POSTGRES_PORT: 5000
+      POSTGRES_REJECTUNAUTHORIZED: false
+      POSTGRES_DIALECT: postgres
+      SECRET_KEY_ENCRYPT: "1234567890"
     networks:
-      - front-tier
       - back-tier
+      - front-tier
     
   frontend:
-    image: managertimefrontend
+    build: ./frontend
     ports:
-      - 5002:5002
+      - 5002:4200
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5002"]
       interval: 1m30s
@@ -49,9 +49,11 @@ services:
     image: postgres
     ports:
       - 5000:5432
+    restart: always
     environment:
-      POSTGRES_USER: "postgres"
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: "123456789"
+      POSTGRES_DB: managertime
     volumes:
       - "db-data:/var/lib/postgresql/data"
       - "./healthchecks:/healthchecks"

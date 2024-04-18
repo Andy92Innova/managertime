@@ -1,7 +1,8 @@
 FROM node:20.12.2-alpine3.19
 WORKDIR /frontend
+RUN apk update && apk add curl
 COPY package.json package-lock.json ./
-RUN npm install && npm run run build
+RUN npm install
 COPY . .
-EXPOSE 5002
-CMD ["npm","run", "start"]
+EXPOSE 4200
+CMD ["npm","run", "startdocker"]

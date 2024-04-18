@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 //middlewares
-router.use('healthcheck', async (req,res)=>{
+router.get('/healthcheck', async (req,res)=>{
     return res.send({message: 'This api is ok'})
 });
 

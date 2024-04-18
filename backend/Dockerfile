@@ -1,6 +1,7 @@
 FROM node:20.12.2-alpine3.19
 WORKDIR /backend
-COPY package.json package-lock ./
+RUN apk update && apk add curl
+COPY package.json package-lock.json ./
 RUN npm install 
 COPY . .
 EXPOSE 5001
