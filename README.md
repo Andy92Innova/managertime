@@ -46,6 +46,14 @@ if you want to run using docker, over the root directory run the following comma
   dockerk compose up
 ```
 
+## Sql files
+
+You can find all the necessary files into *sqlfiles > consider_only* folder
+
+## Healthcheck
+
+You can find all the necessary files to check the health of the services into docker into *healthcheck* folder
+
 ## Tech Stack
 
 **Client:** Angular, Bootstrap, Fontawesome
@@ -53,3 +61,10 @@ if you want to run using docker, over the root directory run the following comma
 **Server:** Node, Express, bcrypt
 
 **Database** PostgresSql
+
+## Features
+
+- Login using token
+- Register new user
+- Main page to control task over different environment do you have.
+- Manage your time appropriately
