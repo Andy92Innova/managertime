@@ -36,15 +36,23 @@ Start the client
   npm run start
 ```
 
+## Build using docker compose
+
+You can run the apps and the all the necessary services using docker compose. You can see the compose file to know the services.
+
 if you want to run using docker, over the root directory run the following command
 
 ```bash
   dockerk compose up
 ```
 
-## Build using docker compose
+## Sql files
 
-You can run the apps and the all the necessary services using docker compose. You can see the compose file to know the services.
+You can find all the necessary files into *sqlfiles > consider_only* folder
+
+## Healthcheck
+
+You can find all the necessary files to check the health of the services into docker into *healthcheck* folder
 
 ## Tech Stack
 
@@ -53,3 +61,10 @@ You can run the apps and the all the necessary services using docker compose. Yo
 **Server:** Node, Express, bcrypt
 
 **Database** PostgresSql
+
+## Features
+
+- Login using token
+- Register new user
+- Main page to control task over different environment do you have.
+- Manage your time appropriately
