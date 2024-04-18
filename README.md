@@ -36,15 +36,15 @@ Start the client
   npm run start
 ```
 
+## Build using docker compose
+
+You can run the apps and the all the necessary services using docker compose. You can see the compose file to know the services.
+
 if you want to run using docker, over the root directory run the following command
 
 ```bash
   dockerk compose up
 ```
-
-## Build using docker compose
-
-You can run the apps and the all the necessary services using docker compose. You can see the compose file to know the services.
 
 ## Tech Stack
 
